@@ -1,0 +1,2075 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>رِواء | وكالة إبداعية رقمية</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Source+Sans+3:wght@400;600&amp;family=Noto+Kufi+Arabic:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#1a1c1c",
+              "surface-bright": "#f9f9f9",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dadada",
+              "surface-container": "#eeeeee",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#e2e1ee",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c6c6c7",
+              tertiary: "#5d5f5f",
+              "inverse-primary": "#9cd83d",
+              "on-primary-container": "#4c7400",
+              "surface-container-low": "#f3f3f4",
+              secondary: "#5d5d68",
+              "primary-fixed-dim": "#9cd83d",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#424937",
+              error: "#ba1a1a",
+              "primary-fixed": "#b7f557",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-fixed": "#121f00",
+              "on-secondary-fixed": "#1a1b24",
+              "on-secondary-container": "#63636e",
+              "outline-variant": "#c2c9b1",
+              "surface-tint": "#446900",
+              "secondary-fixed-dim": "#c6c5d2",
+              primary: "#446900",
+              "brand-deep": "#2f3a34",
+              "brand-lime": "#cdb98b",
+              "tertiary-fixed": "#e2e2e2",
+              background: "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#68696a",
+              "error-container": "#ffdad6",
+              "on-surface": "#1a1c1c",
+              "surface-container-highest": "#e2e2e2",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e8e8e8",
+              "on-secondary-fixed-variant": "#454650",
+              "tertiary-container": "#eaeaea",
+              "primary-container": "#cdb98b",
+              surface: "#f9f9f9",
+              "inverse-surface": "#2f3131",
+              "on-primary-fixed-variant": "#324f00",
+              "on-tertiary-fixed-variant": "#454747",
+              outline: "#737a65",
+              "on-background": "#1a1c1c",
+              "secondary-container": "#e2e1ee",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "8px",
+              xl: "12px",
+              "2xl": "16px",
+              "3xl": "24px",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "20px",
+              "section-gap": "120px",
+              "margin-desktop": "64px",
+              "container-max": "1240px",
+              unit: "8px",
+              gutter: "24px",
+            },
+            fontFamily: {
+              "headline-xl": ["Noto Kufi Arabic", "Plus Jakarta Sans"],
+              "label-md": ["Noto Kufi Arabic", "Plus Jakarta Sans"],
+              "headline-md": ["Noto Kufi Arabic", "Plus Jakarta Sans"],
+              "body-lg": ["Noto Kufi Arabic", "Source Sans 3"],
+              "headline-lg": ["Noto Kufi Arabic", "Plus Jakarta Sans"],
+              "body-md": ["Noto Kufi Arabic", "Source Sans 3"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Noto Kufi Arabic", sans-serif;
+        scroll-behavior: smooth;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      /* Interactive Bento Cards & 3D Tilt */
+      .bento-card,
+      .pricing-card {
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease,
+          border-color 0.3s ease;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+      .bento-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 12px 12px 0px 0px #1a1c1c;
+      }
+      .dark .bento-card:hover {
+        box-shadow: 12px 12px 0px 0px #ffffff !important;
+      }
+      .pricing-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+      }
+
+      /* Liquid Background Elements */
+      .liquid-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        overflow: hidden;
+        z-index: 0;
+        transform-origin: top center;
+        will-change: transform;
+      }
+      .blob {
+        position: absolute;
+        filter: blur(80px);
+        border-radius: 50%;
+        animation: move 20s infinite alternate;
+        opacity: 0.5;
+        will-change: transform;
+      }
+      .blob-1 {
+        width: 600px;
+        height: 600px;
+        background: #cdb98b;
+        top: -20%;
+        left: -10%;
+        animation-delay: 0s;
+      }
+      .blob-2 {
+        width: 500px;
+        height: 500px;
+        background: #2f3a34;
+        bottom: -20%;
+        right: -10%;
+        animation-delay: -5s;
+      }
+      .blob-3 {
+        width: 400px;
+        height: 400px;
+        background: #cdb98b;
+        top: 30%;
+        left: 30%;
+        animation-delay: -10s;
+      }
+
+      @keyframes move {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30%, 20%) scale(1.1);
+        }
+        66% {
+          transform: translate(-20%, 40%) scale(0.9);
+        }
+        100% {
+          transform: translate(10%, -30%) scale(1);
+        }
+      }
+      .hero-content {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Marquee Animation */
+      @keyframes marquee-rtl {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(50%);
+        }
+      }
+      @keyframes marquee-ltr {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-marquee-rtl {
+        animation: marquee-rtl 25s linear infinite;
+      }
+      .animate-marquee-ltr {
+        animation: marquee-ltr 25s linear infinite;
+      }
+
+      /* Scroll Reveal Classes */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 100ms;
+      }
+      .reveal-delay-2 {
+        transition-delay: 200ms;
+      }
+      .reveal-delay-3 {
+        transition-delay: 300ms;
+      }
+
+      /* Layout Grid and Luxury Enhancements */
+      .bg-grid-pattern {
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          #1a1c1c 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+      }
+      .dark .bg-grid-pattern {
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          #ffffff 1px,
+          transparent 0
+        ) !important;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(26, 28, 28, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+      }
+      .luxury-shadow {
+        box-shadow:
+          0 20px 60px -10px rgba(68, 105, 0, 0.12),
+          0 10px 30px -15px rgba(47, 58, 52, 0.15);
+      }
+
+      /* Language LTR Layout Fixes */
+      html[dir="ltr"] .flex-row-reverse {
+        flex-direction: row !important;
+      }
+      html[dir="ltr"] .text-right {
+        text-align: left !important;
+      }
+      html[dir="ltr"] .text-left {
+        text-align: right !important;
+      }
+      html[dir="ltr"] .bg-gradient-to-l {
+        background-image: linear-gradient(
+          to right,
+          var(--tw-gradient-stops)
+        ) !important;
+      }
+      html[dir="ltr"] .animate-marquee-rtl {
+        animation: marquee-ltr 25s linear infinite !important;
+      }
+      html[dir="ltr"] .group-hover\:translate-x-\[-4px\]:hover,
+      html[dir="ltr"] .group:hover .group-hover\:translate-x-\[-4px\] {
+        transform: translateX(4px) !important;
+      }
+      html[dir="ltr"] .group-hover\:-translate-x-2:hover,
+      html[dir="ltr"] .group:hover .group-hover\:-translate-x-2 {
+        transform: translateX(8px) !important;
+      }
+
+      /* Modal Smooth Animation */
+      .modal-fade-in {
+        animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      /* STRICT STYLISH BLACK & WHITE DARK MODE CUSTOM STYLES - FIXES BLEEDING COLORS */
+      .dark,
+      .dark body {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+      }
+      .dark header,
+      .dark footer,
+      .dark section,
+      .dark div,
+      .dark nav,
+      .dark main,
+      .dark input {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border-color: #ffffff !important;
+      }
+      .dark h1,
+      .dark h2,
+      .dark h3,
+      .dark h4,
+      .dark p,
+      .dark span,
+      .dark a,
+      .dark li {
+        color: #ffffff !important;
+        background: none !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }
+      .dark .hero-content p,
+      .dark .hero-content h1,
+      .dark .hero-content span {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }
+      .dark button {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #ffffff !important;
+      }
+      .dark button:hover {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border: 2px solid #ffffff !important;
+      }
+      .dark .bento-card,
+      .dark .pricing-card,
+      .dark .glass-card,
+      .dark #case-study-modal-content {
+        background-color: #000000 !important;
+        border: 2px solid #ffffff !important;
+      }
+      .dark .blob,
+      .dark .liquid-bg,
+      .dark .absolute {
+        background: none !important;
+        background-image: none !important;
+      }
+      .dark .bg-grid-pattern {
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          #ffffff 0.8px,
+          transparent 0
+        ) !important;
+        background-size: 40px 40px !important;
+        opacity: 0.08 !important;
+      }
+      .dark img {
+        filter: grayscale(1) brightness(0.8) contrast(1.2) !important;
+      }
+      .dark .border-brand-deep,
+      .dark .border-on-surface,
+      .dark .border-white\/10 {
+        border-color: #ffffff !important;
+      }
+      .dark .text-brand-lime,
+      .dark .text-primary,
+      .dark .text-white\/80,
+      .dark .text-surface-variant {
+        color: #ffffff !important;
+      }
+      .dark .bg-brand-deep {
+        background-color: #000000 !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface selection:bg-brand-lime selection:text-brand-deep antialiased min-h-screen flex flex-col font-body-md overflow-x-hidden"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-on-surface/10 shadow-sm transition-colors duration-300"
+    >
+      <nav
+        class="flex flex-row-reverse justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-5 max-w-container-max mx-auto"
+      >
+        <a
+          class="text-headline-lg font-headline-lg font-extrabold text-brand-deep tracking-tight"
+          href="#"
+          data-i18n="logo"
+          >رِواء</a
+        >
+        <div class="hidden md:flex flex-row-reverse items-center gap-8">
+          <a
+            class="text-on-surface font-medium hover:text-primary transition-all relative font-label-md group"
+            href="#hero"
+          >
+            <span data-i18n="nav-home">الرئيسية</span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="text-on-surface font-medium hover:text-primary transition-all relative font-label-md group"
+            href="#services"
+          >
+            <span data-i18n="nav-services">خدماتنا</span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="text-on-surface font-medium hover:text-primary transition-all relative font-label-md group"
+            href="#portfolio"
+          >
+            <span data-i18n="nav-cases">دراسات الحالة (أعمالنا)</span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="text-on-surface font-medium hover:text-primary transition-all relative font-label-md group"
+            href="#pricing"
+          >
+            <span data-i18n="nav-pricing">الأسعار</span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+        <div class="flex items-center gap-3">
+          <div
+            class="flex gap-1 border border-on-surface/20 rounded-xl p-1 bg-white/50 backdrop-blur-sm"
+          >
+            <button
+              onclick="switchLanguage('ar')"
+              class="px-2 py-1 text-xs font-bold rounded-lg transition-all bg-brand-deep text-white"
+              id="btn-lang-ar"
+            >
+              AR
+            </button>
+            <button
+              onclick="switchLanguage('en')"
+              class="px-2 py-1 text-xs font-bold rounded-lg transition-all text-brand-deep hover:bg-brand-lime/30"
+              id="btn-lang-en"
+            >
+              EN
+            </button>
+          </div>
+          <button
+            class="bg-brand-deep text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-lime hover:text-brand-deep transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 transform text-sm md:text-base whitespace-nowrap"
+            data-i18n="btn-start"
+          >
+            ابدأ الآن
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-32 pb-section-gap">
+      <section
+        class="min-h-[85vh] flex items-center justify-center relative overflow-hidden bg-surface-container-lowest px-margin-mobile md:px-margin-desktop"
+        id="hero"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-brand-lime/5 via-transparent to-brand-deep/5"
+        ></div>
+        <div class="liquid-bg" id="parallax-bg">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
+        </div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+        <div
+          class="max-w-4xl mx-auto w-full text-center hero-content pb-16 reveal active"
+        >
+          <div class="space-y-10 flex flex-col items-center">
+            <h1
+              class="text-4xl md:text-6xl lg:text-7xl font-headline-xl font-extrabold text-brand-deep drop-shadow-sm leading-[1.4] tracking-wide"
+              id="hero-title"
+            >
+              <span data-i18n="hero-title-1">كل علامة تجارية هي</span>
+              <span
+                class="bg-gradient-to-l from-brand-lime to-primary bg-clip-text text-transparent px-3 py-1 rounded-lg italic text-brand-deep inline-block transform -rotate-1 hover:rotate-0 transition-transform font-bold"
+                data-i18n="hero-title-story"
+                >قصة</span
+              >
+              <span data-i18n="hero-title-2">تستحق أن تُروى للعالم</span>
+            </h1>
+            <p
+              class="text-lg md:text-xl lg:text-2xl text-on-surface-variant max-w-2xl bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-on-surface/10 leading-[1.8]"
+              id="hero-desc"
+              data-i18n="hero-desc"
+            >
+              نحن في رِواء نساعدك على تحويل رؤيتك الإبداعية إلى واقع ملموس من
+              خلال خدمات الهوية البصرية، التصميم، والإنتاج الفني الاحترافي.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 pt-4 w-full sm:w-auto"
+              id="hero-btns"
+            >
+              <button
+                class="bg-gradient-to-l from-brand-deep to-primary text-white px-8 md:px-10 py-4 rounded-xl font-bold hover:from-brand-lime hover:to-primary hover:text-brand-deep transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto transform flex items-center justify-center gap-2"
+              >
+                <span data-i18n="hero-btn-project">ابدأ مشروعك</span>
+                <span class="material-symbols-outlined transform flip-icon"
+                  >arrow_back</span
+                >
+              </button>
+              <button
+                class="bg-white/90 backdrop-blur-sm border-2 border-brand-deep text-brand-deep px-8 md:px-10 py-4 rounded-xl font-bold hover:bg-brand-deep hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto transform"
+                data-i18n="hero-btn-explore"
+              >
+                استكشف خدماتنا
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
+        id="services"
+      >
+        <div
+          class="flex flex-col md:flex-row items-center md:items-baseline gap-4 mb-16 reveal active text-center md:text-right"
+        >
+          <h2
+            class="bg-brand-lime text-brand-deep px-4 py-1 text-headline-md font-bold rounded-lg inline-block"
+            data-i18n="services-title"
+          >
+            خدماتنا
+          </h2>
+          <p
+            class="text-body-md text-on-surface-variant max-w-lg mt-4 md:mt-0"
+            data-i18n="services-desc"
+          >
+            نقدم مجموعة متكاملة من الخدمات الرقمية والإبداعية التي تهدف لنمو
+            علامتك التجارية في الفضاء الرقمي المتسارع.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <div
+            class="bento-card md:col-span-1 bg-brand-deep text-white p-8 md:p-10 rounded-3xl flex flex-col justify-between border border-on-surface h-auto min-h-[350px] reveal active"
+          >
+            <div>
+              <div class="bg-brand-lime/10 w-fit p-3 rounded-xl mb-6">
+                <span class="material-symbols-outlined text-brand-lime text-4xl"
+                  >pentagon</span
+                >
+              </div>
+              <h3
+                class="text-headline-md font-bold mb-4"
+                data-i18n="srv1-title"
+              >
+                الهوية البصرية
+              </h3>
+              <p
+                class="text-surface-variant font-body-md"
+                data-i18n="srv1-desc"
+              >
+                نبني هوية بصرية فريدة تعكس قيم مشروعك وتترك انطباعاً لا يُنسى
+                لدى عملائك.
+              </p>
+            </div>
+            <a
+              class="flex items-center gap-2 font-bold hover:text-brand-lime transition-colors group mt-8"
+              href="#"
+            >
+              <span data-i18n="srv-more">اكتشف المزيد</span>
+              <span
+                class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform flip-icon"
+                >arrow_back</span
+              >
+            </a>
+          </div>
+          <div
+            class="bento-card md:col-span-1 bg-white border border-on-surface p-8 md:p-10 rounded-3xl flex flex-col justify-between h-auto min-h-[350px] reveal reveal-delay-1 active"
+          >
+            <div>
+              <div class="bg-surface-container w-fit p-3 rounded-xl mb-6">
+                <span class="material-symbols-outlined text-brand-deep text-4xl"
+                  >print</span
+                >
+              </div>
+              <h3
+                class="text-headline-md font-bold text-brand-deep mb-4"
+                data-i18n="srv2-title"
+              >
+                تصميم المطبوعات
+              </h3>
+              <p
+                class="text-on-surface-variant font-body-md"
+                data-i18n="srv2-desc"
+              >
+                نحول الأفكار إلى واقع ملموس عبر تصاميم مطبوعة بجودة عالية ولمسات
+                فنية راقية.
+              </p>
+            </div>
+            <a
+              class="flex items-center gap-2 font-bold text-brand-deep hover:text-primary transition-colors group mt-8"
+              href="#"
+            >
+              <span data-i18n="srv-more">اكتشف المزيد</span>
+              <span
+                class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform flip-icon"
+                >arrow_back</span
+              >
+            </a>
+          </div>
+          <div
+            class="bento-card md:col-span-1 lg:col-span-1 bg-white border border-on-surface p-8 md:p-10 rounded-3xl flex flex-col justify-between h-auto min-h-[350px] reveal reveal-delay-2 active"
+          >
+            <div>
+              <div class="bg-brand-lime/20 w-fit p-3 rounded-xl mb-6">
+                <span class="material-symbols-outlined text-brand-deep text-4xl"
+                  >package_2</span
+                >
+              </div>
+              <h3
+                class="text-headline-md font-bold mb-4 bg-brand-lime/30 w-fit"
+                data-i18n="srv3-title"
+              >
+                تصميم التغليف
+              </h3>
+              <p
+                class="text-on-surface-variant font-body-md"
+                data-i18n="srv3-desc"
+              >
+                نصمم غلاف منتجك بأسلوب جذاب يضمن التميز على الرفوف ويزيد من ولاء
+                العملاء.
+              </p>
+            </div>
+            <a
+              class="flex items-center gap-2 font-bold text-brand-deep hover:text-primary transition-colors group mt-8"
+              href="#"
+            >
+              <span data-i18n="srv-more">اكتشف المزيد</span>
+              <span
+                class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform flip-icon"
+                >arrow_back</span
+              >
+            </a>
+          </div>
+          <div
+            class="bento-card md:col-span-2 bg-white border border-on-surface p-8 md:p-10 rounded-3xl flex flex-col md:flex-row gap-8 items-center reveal active"
+          >
+            <div class="flex-1 text-center md:text-right">
+              <div
+                class="bg-surface-container w-fit p-3 rounded-xl mb-6 mx-auto md:mx-0"
+              >
+                <span class="material-symbols-outlined text-brand-deep text-4xl"
+                  >animation</span
+                >
+              </div>
+              <h3
+                class="text-headline-md font-bold text-brand-deep mb-4"
+                data-i18n="srv4-title"
+              >
+                رسوم متحركة 3D
+              </h3>
+              <p
+                class="text-on-surface-variant font-body-md mb-6"
+                data-i18n="srv4-desc"
+              >
+                نمنح علامتك بُعداً جديداً من خلال فيديوهات ثلاثية الأبعاد
+                احترافية تجذب الانتباه وتعزز الفهم.
+              </p>
+              <a
+                class="inline-flex items-center gap-2 font-bold text-brand-deep hover:text-primary transition-colors group justify-center md:justify-start w-full md:w-auto"
+                href="#"
+              >
+                <span data-i18n="srv4-action">شاهد أعمالنا</span>
+                <span
+                  class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform flip-icon"
+                  >arrow_back</span
+                >
+              </a>
+            </div>
+            <div
+              class="flex-1 w-full h-48 bg-surface-container rounded-2xl flex items-center justify-center overflow-hidden"
+            >
+              <div
+                class="w-24 h-24 bg-brand-lime rounded-full animate-pulse flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-brand-deep text-5xl"
+                  >3d_rotation</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="bento-card md:col-span-1 lg:col-span-1 bg-brand-deep text-white p-8 md:p-10 rounded-3xl border border-on-surface flex flex-col justify-between h-auto min-h-[350px] reveal reveal-delay-1 active"
+          >
+            <div>
+              <h3
+                class="text-headline-md font-bold mb-4 text-center md:text-right"
+                data-i18n="srv5-title"
+              >
+                المونتاج
+              </h3>
+              <p
+                class="text-surface-variant font-body-md text-center md:text-right"
+                data-i18n="srv5-desc"
+              >
+                تحرير فيديو سينمائي يعيد سرد أحداثك بلمسة إبداعية بتقنيات حديثة.
+              </p>
+            </div>
+            <div class="mt-8 flex justify-center md:justify-end">
+              <span class="material-symbols-outlined text-brand-lime text-6xl"
+                >movie_edit</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="py-section-gap bg-surface-container-low overflow-hidden relative px-margin-mobile md:px-0 transition-colors duration-300"
+        id="about"
+      >
+        <div
+          class="max-w-container-max mx-auto md:px-margin-desktop grid md:grid-cols-2 gap-12 md:gap-20 items-center"
+        >
+          <div class="relative group reveal active order-2 md:order-1">
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 bg-brand-lime/30 rounded-full blur-3xl group-hover:bg-brand-lime/50 transition-all duration-700"
+            ></div>
+            <div
+              class="relative border-2 border-brand-deep p-2 md:p-4 rounded-3xl transform transition-transform duration-700 group-hover:scale-105"
+            >
+              <img
+                alt="Creative tools"
+                class="rounded-2xl w-full object-cover aspect-video shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                src="ff.png"
+              />
+            </div>
+          </div>
+          <div
+            class="space-y-6 reveal reveal-delay-1 active order-1 md:order-2 text-center md:text-right"
+          >
+            <h2
+              class="text-headline-lg font-headline-lg text-brand-deep"
+              data-i18n="about-title"
+            >
+              عن رِواء
+            </h2>
+            <p
+              class="text-body-lg text-on-surface-variant leading-relaxed"
+              data-i18n="about-desc"
+            >
+              نحن وكالة إبداعية متخصصة في تقديم حلول بصرية متكاملة. نؤمن في
+              رِواء أن كل تفصيلة صغيرة تصنع فرقاً كبيراً في نجاح علامتك
+              التجارية. فريقنا يتكون من نخبة من المبدعين الشغوفين بتحويل الخيال
+              إلى حقائق بصرية مذهلة.
+            </p>
+            <ul class="space-y-4 pt-4 inline-block text-right w-full">
+              <li class="flex items-center gap-3 justify-start">
+                <span
+                  class="material-symbols-outlined text-brand-lime font-bold"
+                  >check_circle</span
+                >
+                <span class="text-body-md font-bold" data-i18n="about-f1"
+                  >دقة عالية في المواعيد والتنفيذ.</span
+                >
+              </li>
+              <li class="flex items-center gap-3 justify-start">
+                <span
+                  class="material-symbols-outlined text-brand-lime font-bold"
+                  >check_circle</span
+                >
+                <span class="text-body-md font-bold" data-i18n="about-f2"
+                  >حلول مبتكرة تناسب ميزانية مشروعك.</span
+                >
+              </li>
+              <li class="flex items-center gap-3 justify-start">
+                <span
+                  class="material-symbols-outlined text-brand-lime font-bold"
+                  >check_circle</span
+                >
+                <span class="text-body-md font-bold" data-i18n="about-f3"
+                  >دعم فني واستشارات إبداعية مستمرة.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="max-w-container-max mx-auto px-margin-desktop md:px-gutter text-center mb-16 mt-16 scroll-mt-28"
+        id="portfolio"
+      >
+        <h2
+          class="text-headline-xl font-headline-xl text-brand-deep mb-6 drop-shadow-sm font-bold"
+          data-i18n="portfolio-title"
+        >
+          أعمالنا ودراسات الحالة التي نفخر بها
+        </h2>
+        <p
+          class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto"
+          data-i18n="portfolio-desc"
+        >
+          اضغط على أي علامة تجارية لاستكشاف دراسة الحالة التفصيلية والإستراتيجية
+          المتبعة.
+        </p>
+      </section>
+
+      <section
+        class="w-full overflow-hidden whitespace-nowrap py-10 mb-12 border-y border-on-surface/5 bg-surface-container-lowest transition-colors duration-300"
+      >
+        <div
+          class="flex w-[200%] animate-marquee-rtl text-headline-md font-bold text-brand-deep/30"
+        >
+          <div class="flex w-1/2 justify-around items-center px-4">
+            <span>Asas mimar</span><span>Al Bahaa</span
+            ><span>515 Engineering</span><span>Remson</span><span>Moxedo</span
+            ><span>ReveScents</span><span>Techverge</span
+            ><span>Royal Phone Center</span>
+          </div>
+          <div class="flex w-1/2 justify-around items-center px-4">
+            <span>Asas mimar</span><span>Al Bahaa</span
+            ><span>515 Engineering</span><span>Remson</span><span>Moxedo</span
+            ><span>ReveScents</span><span>Techverge</span
+            ><span>Royal Phone Center</span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="max-w-container-max mx-auto px-margin-desktop md:px-gutter mb-12"
+      >
+        <div class="flex flex-wrap justify-center gap-4">
+          <button
+            onclick="filterPortfolio('all')"
+            id="filter-btn-all"
+            class="px-6 py-3 bg-brand-deep text-white rounded-full font-bold transition-colors cursor-pointer text-label-md"
+            data-i18n="filter-all"
+          >
+            الكل
+          </button>
+          <button
+            onclick="filterPortfolio('packaging')"
+            id="filter-btn-packaging"
+            class="px-6 py-3 border-2 border-brand-deep rounded-full text-brand-deep font-bold hover:bg-brand-deep hover:text-white transition-colors cursor-pointer text-label-md"
+            data-i18n="filter-pkg"
+          >
+            تصميم التغليف
+          </button>
+          <button
+            onclick="filterPortfolio('3d')"
+            id="filter-btn-3d"
+            class="px-6 py-3 border-2 border-brand-deep rounded-full text-brand-deep font-bold hover:bg-brand-deep hover:text-white transition-colors cursor-pointer text-label-md"
+            data-i18n="filter-3d"
+          >
+            تحريك ثلاثي الأبعاد
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="max-w-container-max mx-auto px-margin-desktop md:px-gutter mb-20"
+      >
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
+          id="portfolio-grid"
+        >
+          <div
+            onclick="openCaseStudy('asasmimar')"
+            data-category="3d"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Asas mimar
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c1-f1">عروض تقديمية معمارية 3D</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('albahaa')"
+            data-category="packaging"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Al Bahaa
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c2-f1"
+                    >تصميم وتطوير تغليف المنتجات الغذائية</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('engineering515')"
+            data-category="3d"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  515 Engineering
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c3-f1"
+                    >نمذجة ميكانيكية وتحريك ثلاثي الأبعاد</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('remson')"
+            data-category="packaging"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Remson
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c4-f1"
+                    >هوية تغليف عصرية لقطع التبديل الإلكترونية</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('moxedo')"
+            data-category="packaging"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Moxedo
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c5-f1">+500 تصميم تغليف</span>
+                </li>
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c5-f2">+350 صورة منتجات احترافية</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('revescents')"
+            data-category="packaging"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  ReveScents
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c6-f1"
+                    >هوية بصرية كاملة وتصميم عطور فاخرة</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('techverge')"
+            data-category="3d"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Techverge
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c7-f1"
+                    >انيميشن واجهات وفيديوهات ترويجية 3D</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            onclick="openCaseStudy('royalphone')"
+            data-category="3d"
+            class="portfolio-item bg-brand-deep rounded-3xl p-8 border border-white/10 hover:-translate-y-2 transition-transform duration-300 shadow-xl group flex flex-col h-full cursor-pointer relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-lime/5 rounded-bl-full"
+            ></div>
+            <div class="relative z-10 flex-grow">
+              <div class="flex justify-between items-start mb-8">
+                <h3
+                  class="text-headline-md font-headline-md text-white font-bold group-hover:text-brand-lime transition-colors"
+                >
+                  Royal Phone Center
+                </h3>
+                <div
+                  class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-brand-lime group-hover:text-brand-deep group-hover:border-brand-lime transition-all"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-white/80 font-body-md mb-8 text-right">
+                <li class="flex items-start gap-3 justify-start">
+                  <span
+                    class="material-symbols-outlined text-brand-lime text-xl"
+                    >verified</span
+                  >
+                  <span data-i18n="c8-f1"
+                    >إعلانات تسويقية وموشن غرافيك ثلاثي الأبعاد</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
+        id="pricing"
+      >
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal active">
+          <h2
+            class="text-headline-lg font-headline-lg mb-4 text-brand-deep font-bold"
+            data-i18n="pricing-title"
+          >
+            باقات الخدمات
+          </h2>
+          <p
+            class="text-body-md text-on-surface-variant"
+            data-i18n="pricing-desc"
+          >
+            اختر الباقة التي تناسب حجم وطموح مشروعك، وانطلق نحو التميز.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter items-center"
+        >
+          <div
+            class="pricing-card bg-white border border-brand-deep p-8 md:p-10 rounded-3xl flex flex-col h-full reveal active"
+          >
+            <h3 class="text-headline-md font-bold mb-2" data-i18n="p1-title">
+              الباقة الأساسية
+            </h3>
+            <div class="text-headline-lg font-bold text-brand-deep mb-8">
+              150 <span class="text-body-md" data-i18n="currency">دولار</span>
+            </div>
+            <ul class="space-y-4 mb-10 flex-grow text-right">
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p1-f1">عدد 6 فيديوهات Reels احترافية</span>
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p1-f2">كتابة نصوص وهوكس مخصصة لجمهورك</span>
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p1-f3"
+                  >مونتاج احترافي وتعديل ألوان أساسي</span
+                >
+              </li>
+            </ul>
+            <button
+              class="w-full py-4 border-2 border-brand-deep rounded-xl font-bold hover:bg-brand-deep hover:text-white transition-all"
+              data-i18n="plan-order"
+            >
+              اطلب الآن
+            </button>
+          </div>
+          <div
+            class="pricing-card bg-brand-deep text-white border-4 border-brand-lime p-8 md:p-10 rounded-3xl flex flex-col h-[105%] relative shadow-2xl reveal active"
+          >
+            <div
+              class="absolute -top-5 left-1/2 -translate-x-1/2 bg-brand-lime text-brand-deep px-6 py-1 rounded-full font-bold text-label-md animate-bounce"
+              data-i18n="gold-badge"
+            >
+              الأكثر طلباً
+            </div>
+            <h3 class="text-headline-md font-bold mb-2" data-i18n="p2-title">
+              باقة الغولد
+            </h3>
+            <div class="text-headline-lg font-bold text-brand-lime mb-8">
+              250
+              <span class="text-body-md text-white/70" data-i18n="currency"
+                >دولار</span
+              >
+            </div>
+            <ul class="space-y-4 mb-10 flex-grow text-right">
+              <li
+                class="flex items-center gap-3 border-b border-white/10 pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-brand-lime"
+                  >done</span
+                ><span data-i18n="p2-f1"
+                  >عدد 12 فيديو Reels / Shorts عالي الجودة</span
+                >
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-white/10 pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-brand-lime"
+                  >done</span
+                ><span data-i18n="p2-f2"
+                  >استراتيجية متكاملة للمحتوى مع أفكار مبتكرة</span
+                >
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-white/10 pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-brand-lime"
+                  >done</span
+                ><span data-i18n="p2-f3"
+                  >إضافة هويات بصرية متحركة وتأثيرات متميزة</span
+                >
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-white/10 pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-brand-lime"
+                  >done</span
+                ><span data-i18n="p2-f4"
+                  >دعم فني واستشارات تسويقية طوال الشهر</span
+                >
+              </li>
+            </ul>
+            <button
+              class="w-full py-4 bg-brand-lime text-brand-deep rounded-xl font-bold hover:bg-white hover:text-brand-deep transition-all shadow-lg"
+              data-i18n="plan-order"
+            >
+              اطلب الآن
+            </button>
+          </div>
+          <div
+            class="pricing-card bg-white border border-brand-deep p-8 md:p-10 rounded-3xl flex flex-col h-full reveal active"
+          >
+            <h3 class="text-headline-md font-bold mb-2" data-i18n="p3-title">
+              باقة الدايموند
+            </h3>
+            <div class="text-headline-lg font-bold text-brand-deep mb-8">
+              300 <span class="text-body-md" data-i18n="currency">دولار</span>
+            </div>
+            <ul class="space-y-4 mb-10 flex-grow text-right">
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p3-f1">إنتاج محتوى متكامل ومكثف للمنصات</span>
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p3-f2"
+                  >تصاميم ثلاثية الأبعاد وتحريك متقدم عناصر 3D</span
+                >
+              </li>
+              <li
+                class="flex items-center gap-3 border-b border-surface-variant pb-3 justify-start"
+              >
+                <span class="material-symbols-outlined text-primary">done</span
+                ><span data-i18n="p3-f3"
+                  >إشراف وتدقيق كامل لإدارة الهوية البصرية</span
+                >
+              </li>
+            </ul>
+            <button
+              class="w-full py-4 border-2 border-brand-deep rounded-xl font-bold hover:bg-brand-deep hover:text-white transition-all"
+              data-i18n="plan-order"
+            >
+              اطلب الآن
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop reveal active"
+      >
+        <div
+          class="max-w-container-max mx-auto bg-brand-lime rounded-[40px] p-8 md:p-12 flex flex-col lg:flex-row justify-between items-center gap-12 relative overflow-hidden shadow-2xl"
+        >
+          <div class="relative z-10 space-y-6 text-center lg:text-right">
+            <h2
+              class="text-3xl md:text-headline-xl font-headline-xl text-brand-deep font-bold"
+              data-i18n="contact-title"
+            >
+              هل أنت مستعد لتروي قصتك؟
+            </h2>
+            <div class="flex gap-4 justify-center lg:justify-start">
+              <a
+                class="w-12 h-12 bg-brand-deep text-brand-lime rounded-full flex items-center justify-center hover:-translate-y-1 transition-all"
+                href="https://www.facebook.com"
+                target="_blank"
+                ><span class="material-symbols-outlined">share</span></a
+              >
+              <a
+                class="w-12 h-12 bg-brand-deep text-brand-lime rounded-full flex items-center justify-center hover:-translate-y-1 transition-all"
+                href="https://www.instagram.com/riwaamark/?hl=en"
+                target="_blank"
+                ><span class="material-symbols-outlined"
+                  >camera_enhance</span
+                ></a
+              >
+            </div>
+          </div>
+          <button
+            class="bg-brand-deep text-white px-8 py-5 rounded-3xl font-bold hover:bg-on-surface transition-all flex items-center gap-4 group"
+          >
+            <span data-i18n="contact-btn">تواصل معنا</span>
+            <span
+              class="material-symbols-outlined group-hover:-translate-x-2 transition-transform flip-icon"
+              >send</span
+            >
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="case-study-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+    >
+      <div
+        id="case-study-modal-content"
+        class="bg-white border border-on-surface max-w-3xl w-full rounded-[32px] p-8 md:p-12 relative luxury-shadow modal-fade-in max-h-[90vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeCaseStudy()"
+          class="absolute top-6 left-6 md:left-8 text-brand-deep hover:scale-110 transition-transform p-2 bg-surface-container rounded-full flex items-center justify-center"
+          aria-label="Close"
+        >
+          <span class="material-symbols-outlined text-2xl font-bold"
+            >close</span
+          >
+        </button>
+        <div class="space-y-6 text-center md:text-right mt-4">
+          <span
+            id="modal-badge"
+            class="text-xs font-bold uppercase tracking-wider bg-brand-lime/40 text-brand-deep px-3 py-1 rounded-full"
+            >دراسة نجاح</span
+          >
+          <h3 id="modal-title" class="text-3xl font-bold text-brand-deep">
+            اسم المشروع
+          </h3>
+          <p
+            id="modal-body"
+            class="text-on-surface-variant leading-relaxed text-lg"
+          >
+            تفاصيل الاستراتيجية والنتائج الفنية هنا...
+          </p>
+          <div class="grid grid-cols-3 gap-4 pt-4" id="modal-stats-grid">
+            <div
+              class="bg-surface-container-low p-4 rounded-xl text-center border border-on-surface/5"
+            >
+              <div
+                id="modal-stat1-val"
+                class="text-2xl font-bold text-brand-deep"
+              >
+                +120%
+              </div>
+              <div id="modal-stat1-lbl" class="text-xs text-on-surface-variant">
+                نمو التفاعل
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-low p-4 rounded-xl text-center border border-on-surface/5"
+            >
+              <div
+                id="modal-stat2-val"
+                class="text-2xl font-bold text-brand-deep"
+              >
+                +500
+              </div>
+              <div id="modal-stat2-lbl" class="text-xs text-on-surface-variant">
+                منتج متميز
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-low p-4 rounded-xl text-center border border-on-surface/5"
+            >
+              <div
+                id="modal-stat3-val"
+                class="text-2xl font-bold text-brand-deep"
+              >
+                100%
+              </div>
+              <div id="modal-stat3-lbl" class="text-xs text-on-surface-variant">
+                رضا الشريك
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="bg-brand-deep text-white border-t border-white/10 transition-colors duration-300"
+    >
+      <div
+        class="flex flex-col lg:flex-row-reverse justify-between w-full px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto text-center lg:text-right items-center"
+      >
+        <div class="text-headline-lg font-bold" data-i18n="logo">رِواء</div>
+        <div class="opacity-60 text-label-md" data-i18n="footer-copy">
+          © 2026 رِواء. جميع الحقوق محفوظة.
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="whatsapp-floating-btn"
+      class="fixed bottom-6 left-6 z-50 transition-all duration-300"
+    >
+      <a
+        href="https://wa.me/963983796705"
+        target="_blank"
+        class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-transform"
+      >
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path
+            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.742.002-2.602-1.004-5.05-2.831-6.88-1.829-1.83-4.261-2.836-6.864-2.837-5.44 0-9.866 4.372-9.87 9.746-.002 1.745.474 3.454 1.378 4.975l-.946 3.454 3.544-.927zm11.233-5.28c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.174.2-.298.3-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        onclick="toggleDarkMode()"
+        class="w-14 h-14 bg-brand-deep text-white rounded-full flex items-center justify-center shadow-2xl border border-on-surface/10 hover:scale-110 active:scale-95 transition-transform"
+      >
+        <span class="material-symbols-outlined text-2xl" id="dark-mode-icon"
+          >dark_mode</span
+        >
+      </button>
+    </div>
+
+    <script>
+      // بيانات دراسة الحالة المنبثقة لجميع الكروت الـ 8 لدعم تعدد اللغات بشكل فوري
+      const caseStudiesData = {
+        asasmimar: {
+          ar: {
+            badge: "حلول معمارية",
+            title: "العروض التقديمية ثلاثية الأبعاد لـ Asas Mimar",
+            body: "إنتاج ومونتاج مقاطع فيديو معمارية ترويجية ثلاثية الأبعاد ساهمت بشكل مباشر في إقناع المستثمرين وإبراز التفاصيل الهندسية المعقدة بوضوح مدهش في السوق التركي والعربي.",
+            s1_val: "3D",
+            s1_lbl: "دقة سينمائية",
+            s2_val: "+4",
+            s2_lbl: "مشاريع كبرى",
+            s3_val: "100%",
+            s3_lbl: "ثقة المستثمر",
+          },
+          en: {
+            badge: "Architectural Pitches",
+            title: "3D Visual Systems for Asas Mimar",
+            body: "Deployed cinematic architectural 3D animation systems to help capture high-scale real estate investments and decode micro-engineering elements.",
+            s1_val: "3D",
+            s1_lbl: "Cinematic Specs",
+            s2_val: "+4",
+            s2_lbl: "Macro Projects",
+            s3_val: "100%",
+            s3_lbl: "Investor Trust",
+          },
+        },
+        albahaa: {
+          ar: {
+            badge: "صناعة غذائية",
+            title: "تطوير الهوية التغليفية لـ Al Bahaa",
+            body: "عملنا على إعادة صياغة الغلاف الفني لمنتجات البهاء الغذائية، مع التركيز على إبراز الجودة العالية والأصالة لزيادة التنافسية في الأسواق الخارجية.",
+            s1_val: "+45%",
+            s1_lbl: "نمو المبيعات",
+            s2_val: "20+",
+            s2_lbl: "غلاف منتج",
+            s3_val: "98%",
+            s3_lbl: "ولاء المستهلك",
+          },
+          en: {
+            badge: "Food Industry",
+            title: "Packaging Development for Al Bahaa",
+            body: "Redesigned the artistic wrapping and food package boxes for Al Bahaa, emphasizing quality and organic roots to amplify absolute international market appeal.",
+            s1_val: "+45%",
+            s1_lbl: "Sales Surge",
+            s2_val: "20+",
+            s2_lbl: "Package Lines",
+            s3_val: "98%",
+            s3_lbl: "User Loyalty",
+          },
+        },
+        engineering515: {
+          ar: {
+            badge: "هندسة وتكنولوجيا",
+            title: "النمذجة الصناعية لـ 515 Engineering",
+            body: "قمنا بإنتاج رسوم متحركة ميكانيكية متقدمة وعروض ثلاثية الأبعاد تشرح آلية عمل الآلات الصناعية المعقدة لتسهيل عمليات البيع والشرح الفني للعملاء.",
+            s1_val: "100%",
+            s1_lbl: "دقة هندسية",
+            s2_val: "4K",
+            s2_lbl: "جودة رندر",
+            s3_val: "+60%",
+            s3_lbl: "سرعة الإقناع",
+          },
+          en: {
+            badge: "Engineering & Tech",
+            title: "Industrial Modeling for 515 Engineering",
+            body: "Produced hyper-accurate mechanical 3D animations explaining heavy machinery internal pipelines, assisting corporate engineering sales performance.",
+            s1_val: "100%",
+            s1_lbl: "Eng. Accuracy",
+            s2_val: "4K",
+            s2_lbl: "Render Quality",
+            s3_val: "+60%",
+            s3_lbl: "Pitch Speed",
+          },
+        },
+        remson: {
+          ar: {
+            badge: "الكترونيات",
+            title: "تصميم الغلاف الفني لمنتجات Remson",
+            body: "صممت رِواء هوية تغليف متطورة وموحدة لقطع التبديل التكنولوجية لعلامة ريمسون، تعزز المظهر الاحترافي وتحمي المنتج بصرياً من التقليد.",
+            s1_val: "+15",
+            s1_lbl: "خطوط إنتاج",
+            s2_val: "مبتكر",
+            s2_lbl: "نمط الرسم",
+            s3_val: "100%",
+            s3_lbl: "حماية الهوية",
+          },
+          en: {
+            badge: "Electronics",
+            title: "Artistic Package Systems for Remson",
+            body: "Crafted a futuristic, robust unified product packaging identity framework for Remson high-tech spare parts, maximizing industrial market authority.",
+            s1_val: "+15",
+            s1_lbl: "Product Lines",
+            s2_val: "Modern",
+            s2_lbl: "Art Style",
+            s3_val: "100%",
+            s3_lbl: "Identity Safe",
+          },
+        },
+        moxedo: {
+          ar: {
+            badge: "دراسة نجاح",
+            title: "إعادة هيكلة الهوية الرقمية لشركة Moxedo",
+            body: "قمنا بالعمل على تحسين وإبراز أكثر من 500 تصميم للمنتجات والتغليف مع تهيئة الفيديوهات الثلاثية الأبعاد، مما أدى لرفع معدل المبيعات والثقة بالعلامة التجارية بنسبة ملحوظة في الأسواق المستهدفة.",
+            s1_val: "+120%",
+            s1_lbl: "نمو التفاعل",
+            s2_val: "+500",
+            s2_lbl: "منتج متميز",
+            s3_val: "100%",
+            s3_lbl: "رضا الشريك",
+          },
+          en: {
+            badge: "Success Case",
+            title: "Total Digital Identity Reshaping for Moxedo",
+            body: "We spearheaded a radical refinement across 500+ product designs while optimizing comprehensive 3D motion assets, boosting conversion performance and brand loyalty noticeably.",
+            s1_val: "+120%",
+            s1_lbl: "Growth rate",
+            s2_val: "+500",
+            s2_lbl: "Premium Goods",
+            s3_val: "100%",
+            s3_lbl: "Partner Joy",
+          },
+        },
+        revescents: {
+          ar: {
+            badge: "إبداع وتطوير",
+            title: "إطلاق خط الهوية العطرية لشركة ReveScents",
+            body: "صممنا منظومة بصرية مذهلة تحاكي الفخامة، بدءاً من الشعارات حتى علب المنتجات وحملة الفيديو ثلاثية الأبعاد المخصصة، محققين قفزة نوعية في انتشار العلامة وعصرنتها.",
+            s1_val: "+85%",
+            s1_lbl: "الوعي بالعلامة",
+            s2_val: "12",
+            s2_lbl: "عطر فريد",
+            s3_val: "+40K",
+            s3_lbl: "مشاهدة للحملة",
+          },
+          en: {
+            badge: "Creativity & Dev",
+            title: "Aromatic Identity Launch for ReveScents",
+            body: "We architected an integrated luxury system from logos down to exquisite bottles and highly-optimized cinematic motion reels, driving high industrial conversion.",
+            s1_val: "+85%",
+            s1_lbl: "Brand Awareness",
+            s2_val: "12",
+            s2_lbl: "Unique Scents",
+            s3_val: "+40K",
+            s3_lbl: "Campaign Views",
+          },
+        },
+        techverge: {
+          ar: {
+            badge: "برمجيات",
+            title: "انيميشن واجهات شركة Techverge",
+            body: "تحريك ثلاثي الأبعاد متقن لواجهات البرامج والأنظمة التكنولوجية الخاصة بتيك فيرج، لعرض الميزات البرمجية المعقدة في قوالب فيديو ممتعة وسهلة الفهم.",
+            s1_val: "3D",
+            s1_lbl: "تحريك الواجهات",
+            s2_val: "+2.5M",
+            s2_lbl: "إجمالي المشاهدات",
+            s3_val: "100%",
+            s3_lbl: "وضوح الأفكار",
+          },
+          en: {
+            badge: "Software Tech",
+            title: "UI Motion Graphics for Techverge",
+            body: "Rendered sleek and comprehensive 3D tech assets displaying internal platform tools seamlessly, turning high-tech features into premium motion ads.",
+            s1_val: "3D",
+            s1_lbl: "UI Animation",
+            s2_val: "+2.5M",
+            s2_lbl: "Total Views",
+            s3_val: "100%",
+            s3_lbl: "Concept Clarity",
+          },
+        },
+        royalphone: {
+          ar: {
+            badge: "اتصالات",
+            title: "الحملة البصرية لمركز Royal Phone",
+            body: "إنتاج محتوى فيديو ترويجي تفاعلي ريلز وشورتس ثلاثي الأبعاد مع لمسات موشن غرافيك، مما أدى لمضاعفة زيارات العملاء والتفاعل على منصات السوشيال ميديا.",
+            s1_val: "+200%",
+            s1_lbl: "تفاعل اجتماعي",
+            s2_val: "16+",
+            s2_lbl: "فيديو مخصص",
+            s3_val: "96%",
+            s3_lbl: "عائد الاستثمار",
+          },
+          en: {
+            badge: "Telecom",
+            title: "Visual Campaign for Royal Phone Center",
+            body: "Constructed premium interactive 3D reels and specialized motion ads that vastly enhanced retail foot traffic and magnified continuous social interactions.",
+            s1_val: "+200%",
+            s1_lbl: "Social Buzz",
+            s2_val: "16+",
+            s2_lbl: "Targeted Reels",
+            s3_val: "96%",
+            s3_lbl: "Campaign ROI",
+          },
+        },
+      };
+
+      let currentActiveCaseKey = null;
+      let currentLang = "ar";
+
+      const translations = {
+        ar: {
+          logo: "رِواء",
+          "nav-home": "الرئيسية",
+          "nav-services": "خدماتنا",
+          "nav-cases": "دراسات الحالة (أعمالنا)",
+          "nav-pricing": "الأسعار",
+          "btn-start": "ابدأ الآن",
+          "hero-title-1": "كل علامة تجارية هي",
+          "hero-title-story": "قصة",
+          "hero-title-2": "تستحق أن تُروى للعالم",
+          "hero-desc":
+            "نحن في رِواء نساعدك على تحويل رؤيتك الإبداعية إلى واقع ملموس من خلال خدمات الهوية البصرية، التصميم، والإنتاج الفني الاحترافي.",
+          "hero-btn-project": "ابدأ مشروعك",
+          "hero-btn-explore": "استكشف خدماتنا",
+          "services-title": "خدماتنا",
+          "services-desc":
+            "نقدم مجموعة متكاملة من الخدمات الرقمية والإبداعية التي تهدف لنمو علامتك التجارية في الفضاء الرقمي المتسارع.",
+          "srv1-title": "الهوية البصرية",
+          "srv1-desc":
+            "نبني هوية بصرية فريدة تعكس قيم مشروعك وتترك انطباعاً لا يُنسى لدى عملائك.",
+          "srv-more": "اكتشف المزيد",
+          "srv2-title": "تصميم المطبوعات",
+          "srv2-desc":
+            "نحول الأفكار إلى واقع ملموس عبر تصاميم مطبوعة بجودة عالية ولمسات فنية راقية.",
+          "srv3-title": "تصميم التغليف",
+          "srv3-desc":
+            "نصمم غلاف منتجك بأسلوب جذاب يضمن التميز على الرفوف ويزيد من ولاء العملاء.",
+          "srv4-title": "رسوم متحركة 3D",
+          "srv4-desc":
+            "نمنح علامتك بُعداً جديداً من خلال فيديوهات ثلاثية الأبعاد احترافية تجذب الانتباه وتعزز الفهم.",
+          "srv4-action": "شاهد أعمالنا",
+          "srv5-title": "المونتاج",
+          "srv5-desc":
+            "تحرير فيديو سينمائي يعيد سرد أحداثك بلمسة إبداعية بتقنيات حديثة.",
+          "about-title": "عن رِواء",
+          "about-desc":
+            "نحن وكالة إبداعية متخصصة في تقديم حلول بصرية متكاملة. نؤمن في رِواء أن كل تفصيلة صغيرة تصنع فرقاً كبيراً في نجاح علامتك التجارية. فريقنا يتكون من نخبة من المبدعين الشغوفين بتحويل الخيال إلى حقائق بصرية مذهلة.",
+          "about-f1": "دقة عالية في المواعيد والتنفيذ.",
+          "about-f2": "حلول مبتكرة تناسب ميزانية مشروعك.",
+          "about-f3": "دعم فني واستشارات إبداعية مستمرة.",
+          "portfolio-title": "أعمالنا ودراسات الحالة التي نفخر بها",
+          "portfolio-desc":
+            "اضغط على أي علامة تجارية لاستكشاف دراسة الحالة التفصيلية والإستراتيجية المتبعة.",
+          "filter-all": "الكل",
+          "filter-pkg": "تصميم التغليف",
+          "filter-3d": "تحريك ثلاثي الأبعاد",
+          "c1-f1": "عروض تقديمية معمارية 3D",
+          "c2-f1": "تصميم وتطوير تغليف المنتجات الغذائية",
+          "c3-f1": "نمذجة ميكانيكية وتحريك ثلاثي الأبعاد",
+          "c4-f1": "هوية تغليف عصرية لقطع التبديل الإلكترونية",
+          "c5-f1": "+500 تصميم تغليف",
+          "c5-f2": "+350 صورة منتجات احترافية",
+          "c6-f1": "هوية بصرية كاملة وتصميم عطور فاخرة",
+          "c7-f1": "انيميشن واجهات وفيديوهات ترويجية 3D",
+          "c8-f1": "إعلانات تسويقية وموشن غرافيك ثلاثي الأبعاد",
+          "pricing-title": "باقات الخدمات",
+          "pricing-desc":
+            "اختر الباقة التي تناسب حجم وطموح مشروعك، وانطلق نحو التميز.",
+          "p1-title": "الباقة الأساسية",
+          "p1-f1": "عدد 6 فيديوهات Reels احترافية",
+          "p1-f2": "كتابة نصوص وهوكس مخصصة لجمهورك",
+          "p1-f3": "مونتاج احترافي وتعديل ألوان أساسي",
+          "p2-title": "باقة الغولد",
+          "p2-f1": "عدد 12 فيديو Reels / Shorts عالي الجودة",
+          "p2-f2": "استراتيجية متكاملة للمحتوى مع أفكار مبتكرة",
+          "p2-f3": "إضافة هويات بصرية متحركة وتأثيرات متميزة",
+          "p2-f4": "دعم فني واستشارات تسويقية طوال الشهر",
+          "p3-title": "باقة الدايموند",
+          "p3-f1": "إنتاج محتوى متكامل ومكثف للمنصات",
+          "p3-f2": "تصاميم ثلاثية الأبعاد وتحريك متقدم عناصر 3D",
+          "p3-f3": "إشراف وتدقيق كامل لإدارة الهوية البصرية",
+          currency: "دولار",
+          "gold-badge": "الأكثر طلباً",
+          "plan-order": "اطلب الآن",
+          "contact-title": "هل أنت مستعد لتروي قصتك؟",
+          "contact-btn": "تواصل معنا",
+          "footer-copy": "© 2026 رِواء. جميع الحقوق محفوظة.",
+        },
+        en: {
+          logo: "Riwaa",
+          "nav-home": "Home",
+          "nav-services": "Services",
+          "nav-cases": "Case Studies (Our Work)",
+          "nav-pricing": "Pricing",
+          "btn-start": "Get Started",
+          "hero-title-1": "Every brand is a",
+          "hero-title-story": "Story",
+          "hero-title-2": "worth telling to the world",
+          "hero-desc":
+            "At Riwaa, we help you transform your creative vision into tangible reality through branding, custom design, and professional visual production services.",
+          "hero-btn-project": "Start Project",
+          "hero-btn-explore": "Explore Services",
+          "services-title": "Our Services",
+          "services-desc":
+            "We deliver a comprehensive suite of digital and creative solutions aimed at scaling your brand in a fast-paced digital universe.",
+          "srv1-title": "Visual Identity",
+          "srv1-desc":
+            "We build cohesive visual identities that mirror your corporate values and carve an unforgettable impression on your clients.",
+          "srv-more": "Discover More",
+          "srv2-title": "Print Design",
+          "srv2-desc":
+            "We morph raw creative concepts into tangibles through premium-grade printed layouts with artistic final flourishes.",
+          "srv3-title": "Package Design",
+          "srv3-desc":
+            "We architecture product packages with absolute magnetic styles ensuring unparalleled presence on store displays.",
+          "srv4-title": "3D Motion Graphics",
+          "srv4-desc":
+            "Imbue your business narrative with depth using high-fidelity cinematic 3D visual dynamics that drive absolute clarity.",
+          "srv4-action": "See Our Work",
+          "srv5-title": "Video Editing",
+          "srv5-desc":
+            "Elite level post-production to stitch your milestones into absolute masterpieces powered by high-end engineering.",
+          "about-title": "About Riwaa",
+          "about-desc":
+            "We are a creative agency specialized in delivering integrated visual solutions. We believe at Riwaa that every microscopic detail forms a grand milestone for your brand success. Our team consists of elite visual storytellers passionate about translating imagination into breathtaking visuals.",
+          "about-f1": "High commitment to deadlines and delivery.",
+          "about-f2":
+            "Innovative blueprints crafted to mirror your exact budget.",
+          "about-f3": "Continuous artistic consulting and support.",
+          "portfolio-title": "Milestones & Case Studies We Celebrate",
+          "portfolio-desc":
+            "Click on any corporate block to discover full strategic analytics and creative pipelines deployed.",
+          "filter-all": "All",
+          "filter-pkg": "Packaging",
+          "filter-3d": "3D Animation",
+          "c1-f1": "Architectural 3D Presentation Pitches",
+          "c2-f1": "Product Packaging Design for Food Tech",
+          "c3-f1": "Mechanical Asset Modeling & 3D Animation",
+          "c4-f1": "Modern Electronic Components Box Identity",
+          "c5-f1": "+500 Premium Package Layouts",
+          "c5-f2": "+350 High-End Product Shoots",
+          "c6-f1": "Luxury Branding & Perfume Bottle Outlines",
+          "c7-f1": "Sleek UI Layout Motion Systems & 3D Ads",
+          "c8-f1": "Telecom Media Content & Advanced 3D Reels",
+          "pricing-title": "Service Frameworks",
+          "pricing-desc":
+            "Select the tactical blueprint optimized for your operational scale and expand limits.",
+          "p1-title": "Essential Tier",
+          "p1-f1": "6 Premium Professional Reels",
+          "p1-f2": "Tailored copywriting hooks for target audience",
+          "p1-f3": "Professional editing & basic color grading",
+          "p2-title": "Gold Tier",
+          "p2-f1": "12 Ultra High Quality Reels / Shorts",
+          "p2-f2": "Integrated content roadmap with creative insights",
+          "p2-f3": "Custom motion typography & premium visual FX",
+          "p2-f4": "Dedicated functional support & marketing advisory",
+          "p3-title": "Diamond Tier",
+          "p3-f1": "Heavy-duty full content production system",
+          "p3-f2": "Advanced 3D modeling & custom animation systems",
+          "p3-f3": "End-to-end operational design stewardship",
+          currency: "USD",
+          "gold-badge": "Most Requested",
+          "plan-order": "Order Now",
+          "contact-title": "Ready to Architect Your Story?",
+          "contact-btn": "Connect Now",
+          "footer-copy": "© 2026 Riwaa. All Rights Reserved.",
+        },
+      };
+
+      // دالة فتح دراسة الحالة في نافذة منبثقة تفاعلية كبرى
+      function openCaseStudy(caseKey) {
+        currentActiveCaseKey = caseKey;
+        const modal = document.getElementById("case-study-modal");
+        if (!caseStudiesData[caseKey]) return;
+        const dataset = caseStudiesData[caseKey][currentLang];
+
+        document.getElementById("modal-badge").innerText = dataset.badge;
+        document.getElementById("modal-title").innerText = dataset.title;
+        document.getElementById("modal-body").innerText = dataset.body;
+
+        document.getElementById("modal-stat1-val").innerText = dataset.s1_val;
+        document.getElementById("modal-stat1-lbl").innerText = dataset.s1_lbl;
+        document.getElementById("modal-stat2-val").innerText = dataset.s2_val;
+        document.getElementById("modal-stat2-lbl").innerText = dataset.s2_lbl;
+        document.getElementById("modal-stat3-val").innerText = dataset.s3_val;
+        document.getElementById("modal-stat3-lbl").innerText = dataset.s3_lbl;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      // دالة إغلاق النافذة المنبثقة
+      function closeCaseStudy() {
+        const modal = document.getElementById("case-study-modal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        currentActiveCaseKey = null;
+      }
+
+      // إغلاق النافذة المنبثقة عند الضغط في أي مكان خارج حاوية المحتوى
+      document
+        .getElementById("case-study-modal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeCaseStudy();
+        });
+
+      // فلترة عناصر معرض الأعمال بكفاءة عالية
+      function filterPortfolio(category) {
+        const items = document.querySelectorAll(".portfolio-item");
+
+        // تعديل ألوان أزرار الفلترة النشطة
+        const btnAll = document.getElementById("filter-btn-all");
+        const btnPkg = document.getElementById("filter-btn-packaging");
+        const btn3d = document.getElementById("filter-btn-3d");
+
+        const activeClasses = ["bg-brand-deep", "text-white"];
+        const inactiveClasses = [
+          "border-2",
+          "border-brand-deep",
+          "text-brand-deep",
+          "bg-transparent",
+        ];
+
+        // إعادة تعيين الأزرار أولاً
+        [btnAll, btnPkg, btn3d].forEach((btn) => {
+          if (btn) {
+            btn.classList.remove(...activeClasses, ...inactiveClasses);
+            btn.classList.add(...inactiveClasses);
+          }
+        });
+
+        // إعطاء الزر المضغوط كلاس النشاط
+        const currentBtn = document.getElementById(`filter-btn-${category}`);
+        if (currentBtn) {
+          currentBtn.classList.remove(...inactiveClasses);
+          currentBtn.classList.add(...activeClasses);
+        }
+
+        // إخفاء وإظهار الكروت بناءً على الفئة
+        items.forEach((item) => {
+          if (
+            category === "all" ||
+            item.getAttribute("data-category") === category
+          ) {
+            item.style.display = "flex";
+            setTimeout(() => {
+              item.style.opacity = "1";
+              item.style.transform = "scale(1)";
+            }, 10);
+          } else {
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              item.style.display = "none";
+            }, 300);
+          }
+        });
+      }
+
+      // نظام الترجمة والتحكم في اتجاه الصفحات مع الحفاظ على الكيس ستادي مفتوحة إن كانت نشطة
+      function switchLanguage(lang) {
+        currentLang = lang;
+        const html = document.documentElement;
+        html.setAttribute("lang", lang);
+
+        const whatsappBtn = document.getElementById("whatsapp-floating-btn");
+        if (lang === "en") {
+          html.setAttribute("dir", "ltr");
+          if (whatsappBtn) {
+            whatsappBtn.classList.remove("left-6");
+            whatsappBtn.classList.add("right-6");
+          }
+          document
+            .getElementById("btn-lang-en")
+            .classList.add("bg-brand-deep", "text-white");
+          document
+            .getElementById("btn-lang-en")
+            .classList.remove("text-brand-deep");
+          document
+            .getElementById("btn-lang-ar")
+            .classList.remove("bg-brand-deep", "text-white");
+          document
+            .getElementById("btn-lang-ar")
+            .classList.add("text-brand-deep");
+        } else {
+          html.setAttribute("dir", "rtl");
+          if (whatsappBtn) {
+            whatsappBtn.classList.remove("right-6");
+            whatsappBtn.classList.add("left-6");
+          }
+          document
+            .getElementById("btn-lang-ar")
+            .classList.add("bg-brand-deep", "text-white");
+          document
+            .getElementById("btn-lang-ar")
+            .classList.remove("text-brand-deep");
+          document
+            .getElementById("btn-lang-en")
+            .classList.remove("bg-brand-deep", "text-white");
+          document
+            .getElementById("btn-lang-en")
+            .classList.add("text-brand-deep");
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[lang][key])
+            element.innerHTML = translations[lang][key];
+        });
+
+        document.querySelectorAll(".flip-icon").forEach((icon) => {
+          icon.innerText = lang === "en" ? "arrow_forward" : "arrow_back";
+        });
+
+        if (currentActiveCaseKey) {
+          openCaseStudy(currentActiveCaseKey);
+        }
+      }
+
+      // نظام التبديل للوضع الليلي الصارم ذو المظهر الأبيض والأسود الاحترافي
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        const icon = document.getElementById("dark-mode-icon");
+        if (icon) icon.innerText = isDark ? "light_mode" : "dark_mode";
+      }
+
+      // التنقل السلس والذكي عبر الروابط الداخلية للموقع
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // مراقبة العناصر للظهور التدرجي عند النزول بالفأرة (Scroll Reveal)
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("active");
+          });
+        },
+        { threshold: 0.15 },
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      // تأثير الـ 3D Tilt المميز لكروت البينتو عند تحريك الماوس (يتم تعطيله على الشاشات اللمسية لتوفير الأداء)
+      if (window.matchMedia("(hover: hover)").matches) {
+        const cards = document.querySelectorAll(".bento-card, .pricing-card");
+        cards.forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.transform =
+              "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
